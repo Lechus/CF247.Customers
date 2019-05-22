@@ -1,19 +1,26 @@
-Customers WebAPI
+#Customers WebAPI
 
 Provides an interface to the CF247's customer data store.
 
 ## Overview
 
 A simple Web Api that provides a ReST based interface into the CF247 customer data store. It is coded in C# and built using .NET Core 2.1.
-There is a simple SQLExpress database that provides the 
+There is a simple SQLExpress database that provides the physical storage.
+There are built in integration tests that utilise Entity Framework's and .NET Core 2.1 capability to more easily execute integration tests
+Swagger documentation is also available at http://localhost:49913/swagger
 
 ## Endpoints
 
 ### GET /api/customers
 
+Returns all customer data
+
+#### Request
+Body : None
 Parameters : None
 
-Response example
+#### Response
+Example
 [
   {
     "customerId": "string",
@@ -26,9 +33,13 @@ Response example
 
 ### GET api/customers/{customerid}
 
-Parameters customerID string (uuid)
+Gets the customer details of a specific customer give their id (Guid)
 
-Response example
+#### Request
+Parameters : customerID string (Guid)
+
+#### Response
+Example
 {
   "customerId": "string",
   "firstName": "string",
@@ -39,9 +50,11 @@ Response example
 
 ### POST api/customers
 
-Parameters : Body
+Creates a new customer in the data store
 
-Request example
+#### Request
+Parameters : none
+Body: 
 {
   "firstName": "string",
   "lastName": "string",
@@ -51,9 +64,8 @@ Request example
 
 ### PUT api/customers
 
-Parameters : Body
-
-Request example
+Parameters : none
+Body:
 {
   "firstName": "string",
   "lastName": "string",
@@ -62,6 +74,9 @@ Request example
 }
 
 ## Get started
+
+1. Publish the SQL Server data base to a running SQL Server database
+2. Configure the application.json setting file to use the correct settings
 
 ## Next Versions
 
