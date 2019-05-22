@@ -16,7 +16,7 @@ namespace CF247.CustomersWebApi.Validation
                 .NotNull()
                 .NotEmpty()
                 .Length(1, 100)
-                .Must(c => IsAValidEmailAddress(c));
+                .EmailAddress();
 
             RuleFor(c => c.FirstName)
                 .NotNull()
@@ -32,12 +32,6 @@ namespace CF247.CustomersWebApi.Validation
 
             RuleFor(c => c.Password)
                 .Password();
-        }
-
-        private bool IsAValidEmailAddress(string emailAddress)
-        {
-            //TODO add email address validation (RegEx)
-            return true;
         }
 
         private bool IsAlpha(string nameAttribute)

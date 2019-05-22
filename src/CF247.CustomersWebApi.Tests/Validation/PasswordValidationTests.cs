@@ -1,7 +1,6 @@
 ﻿using CF247.CustomersWebApi.Entities;
 using CF247.CustomersWebApi.Validation;
 using FluentAssertions;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;

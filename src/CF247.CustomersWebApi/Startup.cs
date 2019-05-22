@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
+using FluentValidation.AspNetCore;
 
 namespace CF247.CustomersWebApi
 {
@@ -34,7 +35,8 @@ namespace CF247.CustomersWebApi
             {
                 //only allow application/json
                 setUpAction.ReturnHttpNotAcceptable = true;
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            .AddFluentValidation();
 
             // register the DbContext on the container, getting the connection string from
             // appSettings (note: use this during development; in a production environment,

@@ -72,6 +72,12 @@ namespace CF247.CustomersWebApi.Controllers
 
             var customerRepo = AutoMapper.Mapper.Map<Customer>(customerForCreation);
 
+            if (!ModelState.IsValid)
+            {
+                _logger.LogInformation("Creating new customer failed validation");
+                return BadRequest(ModelState);
+            }
+
             _customerRepository.AddCustomer(customerRepo);
 
             if (!_customerRepository.Save())
@@ -110,6 +116,12 @@ namespace CF247.CustomersWebApi.Controllers
             }
 
             AutoMapper.Mapper.Map(customer, customerFromRepo);
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogInformation("Updating new customer failed validation");
+                return BadRequest(ModelState);
+            }
 
             _customerRepository.UpdateCustomer(customerFromRepo);
 
